@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCustomer">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Linear Layout for top 2 buttons STARTS-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <!--Cancel Button-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/cancelBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Cancel"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+
+            <!--Save Button-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Save"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <!--Linear Layout for top 2 buttons ENDS-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/cust_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Customer Name"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:paddingTop="24dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <EditText
+                android:id="@+id/cust_nuid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NUID No."
+                android:textSize="24sp"
+                android:gravity="center"
+                android:paddingTop="24dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <EditText
+                android:id="@+id/cust_acc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Account No."
+                android:textSize="24sp"
+                android:inputType="number"
+                android:gravity="center"
+                android:paddingTop="24dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <EditText
+                android:id="@+id/custMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="1 month"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:inputType="number"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

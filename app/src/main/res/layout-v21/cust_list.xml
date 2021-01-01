@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="13dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="#262626">
+
+    <!--Main Layout which has 2 layout in it-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <!-- Layout Left for Character of Name START-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/nameChar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="C"
+                android:textSize="120sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+        <!-- Layout Left for Character of Name END-->
+
+        <!-- Layout Right for Name, NUID, Acc and start-end Date START-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical">
+
+            <!--First layout for storing Name START-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Name: "
+                    android:textColor="#ffffff"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Enter Name"
+                    android:textColor="#f2f2f2"
+                    android:gravity="center"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+            <!--First layout for storing Name START-->
+
+            <!--Second Layout for stroing NUID START-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="NUID No.: "
+                    android:textSize="17sp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/nuid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="NUID No."
+                    android:textSize="15sp"
+                    android:textColor="#f2f2f2"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <!--Second Layout for stroing NUID END-->
+
+            <!--Second Layout for stroing NUID START-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Acc No.: "
+                    android:textSize="17sp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/accNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Account No."
+                    android:textSize="15sp"
+                    android:textColor="#f2f2f2"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <!--Second Layout for stroing AccNo END-->
+
+            <!--Second Layout for stroing Status START-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Status: "
+                    android:textSize="17sp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Active"
+                    android:textSize="15sp"
+                    android:textColor="#f2f2f2"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <!--Second Layout for stroing Status END-->
+        </LinearLayout>
+        <!-- Layout Right for Name, NUID, Acc and start-end Date END-->
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
