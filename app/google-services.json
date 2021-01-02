@@ -1,7 +1,7 @@
 {
   "project_info": {
     "project_number": "1006257363682",
-    "project_id": "customers-694a1",
+    "project_id": "Add Your Project Id from firebase",
     "storage_bucket": "customers-694a1.appspot.com"
   },
   "client": [
@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1006257363682-afu7k67o8jupv51o8h0vpj9h8lba982t.apps.googleusercontent.com",
+          "client_id": "Add your client ID",
           "client_type": 3
         }
       ],
