@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,8 +36,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //  Show progress bar before loading data
-        showProgressBar()
+
+        if(DisplayCustomerList.size == 0)
+        {
+            //  Show progress bar before loading data
+            showProgressBar()
+        }
+        else{
+            setRecycleViewAdapter(DisplayCustomerList)
+        }
 
         //  If Internet Connectivity is Available then
         if(!isConnected()){
@@ -62,18 +70,7 @@ class MainActivity : AppCompatActivity() {
                     if(DisplayCustomerList.size == 0 || DisplayCustomerList.size != snapshot.childrenCount.toInt()){
                         Log.i("LoadData", "Loaded Data = " + snapshot.childrenCount)
 
-                        for(i in snapshot.children){
-                            val Cname = i.child("_name").value.toString()
-                            val Cnuid = i.child("_nuid").value.toString()
-                            val Cacc = i.child("_acc").value as Long
-                            val CstartDate = i.child("_st_date").value as Long
-                            val CendDate = i.child("_en_date").value as Long
-
-                            val custObj = Customer(Cname, Cnuid, Cacc, CstartDate, CendDate)
-                            if (custObj !in DisplayCustomerList){
-                                DisplayCustomerList.add(custObj)
-                            }
-                        }
+                        getDataFromSnapshot(snapshot)
                         //  Storing sorted and Unique data to main Customer List
                         DisplayCustomerList = ArrayList(DisplayCustomerList.sortedBy { it._name })
 
@@ -82,12 +79,11 @@ class MainActivity : AppCompatActivity() {
                         Log.i("AfterGettingData", "Result = " + DisplayCustomerList.size)
 
                         setRecycleViewAdapter(DisplayCustomerList)
-                        //  HideProgressBar
-                        hideProgressBar()
                     }
                 }
             }
 
+            //  Created ChildEventListner to handle onChildDelete
             val deleteObj = object : ChildEventListener{
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
@@ -123,6 +119,22 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddCustomer::class.java)
             startActivity(intent)
         }
+
+        //  Handling on back Pressed
+        this@MainActivity.onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                val builder = AlertDialog.Builder(this@MainActivity)
+                with(builder){
+                    setTitle("Exit!!")
+                    setMessage("Do you want to leave this app ?")
+                    setPositiveButton("Yes", DialogInterface.OnClickListener {
+                        _, _ -> finish() })
+                    setNegativeButton("No", DialogInterface.OnClickListener {
+                        dialog, _ -> dialog.cancel()})
+                    show()
+                }
+            }
+        })
     }
 
     private fun setRecycleViewAdapter(custList:List<Customer>){
@@ -131,6 +143,9 @@ class MainActivity : AppCompatActivity() {
 
         //  Setting RecycleAdapter to our Customer Adapter
         recycleViewID.adapter = adapter
+
+        //  HideProgressBar
+        hideProgressBar()
     }
     private fun showProgressBar(){
         findViewById<RecyclerView>(R.id.recycleViewID).visibility = View.GONE
@@ -226,5 +241,21 @@ class MainActivity : AppCompatActivity() {
         val textError = findViewById<TextView>(R.id.errorTV)
         textError.text = msg
         textError.visibility = View.VISIBLE
+    }
+
+    //  To extraxt data from snapshot
+    private fun getDataFromSnapshot(snapshot: DataSnapshot){
+        for(i in snapshot.children){
+            val Cname = i.child("_name").value.toString()
+            val Cnuid = i.child("_nuid").value.toString()
+            val Cacc = i.child("_acc").value as Long
+            val CstartDate = i.child("_st_date").value as Long
+            val CendDate = i.child("_en_date").value as Long
+
+            val custObj = Customer(Cname, Cnuid, Cacc, CstartDate, CendDate)
+            if (custObj !in DisplayCustomerList){
+                DisplayCustomerList.add(custObj)
+            }
+        }
     }
 }
